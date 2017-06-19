@@ -1,0 +1,320 @@
+#N canvas 277 62 609 551 10;
+#X obj 169 402 tgl 15 0 empty empty on/off 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 189 483 normalize \$1;
+#X obj 190 458 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array chromagram 12 float 3;
+#A 0 0.128408 0.106022 0.360725 0.13649 0.13178 0.723967 0.18852 1
+0.256585 0.278899 0.935283 0.243777;
+#X coords 0 1 12 0 196 140 1;
+#X restore 322 84 graph;
+#X obj 321 85 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 337 85 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 354 85 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 370 85 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 386 85 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 402 85 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 419 85 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 435 85 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 452 85 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 468 85 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 485 85 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 501 85 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X text 320 220 C__C#_D__D#_E_F__F#_G_G#_A__A#_B;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array chroma 12 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 12 0 196 140 1;
+#X restore 51 85 graph;
+#X obj 51 86 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 67 86 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 84 86 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 100 86 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 116 86 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 132 86 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 149 86 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 165 86 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 182 86 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 198 86 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X obj 215 86 cnv 15 16 140 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X obj 231 86 cnv 15 16 140 empty empty empty 20 12 0 14 -162280 -66577
+0;
+#X text 50 221 C__C#_D__D#_E_F__F#_G_G#_A__A#_B;
+#N canvas 0 -5 367 199 player 0;
+#X obj 57 67 dac~;
+#X obj 35 116 outlet~;
+#X obj 218 5 openpanel;
+#X obj 218 50 soundfiler;
+#X msg 218 28 read -resize \$1 sound;
+#X obj 217 70 table sound;
+#X obj 55 3 s next;
+#X obj 35 29 tabplay~ sound;
+#X obj 35 -20 inlet;
+#X obj 217 -30 inlet;
+#X connect 2 0 4 0;
+#X connect 4 0 3 0;
+#X connect 7 0 0 0;
+#X connect 7 0 0 1;
+#X connect 7 0 1 0;
+#X connect 8 0 7 0;
+#X connect 8 0 6 0;
+#X connect 9 0 2 0;
+#X restore 21 296 pd player;
+#X obj 72 277 bng 15 250 50 0 empty empty open-file 17 7 0 10 -262144
+-1 -1;
+#X obj 21 263 bng 15 250 50 0 empty empty Play 17 7 0 10 -262144 -1
+-1;
+#X obj 35 478 s chroma;
+#X text 319 238 Chromagram is a histogram of successive;
+#X text 273 481 normalize the chroma vector between 0 and 1;
+#X text 326 523 by Adriano Monteiro - monteiro.adc@gmail.com;
+#X text 9 -12 HPCP (Harmonic Pitch Class Profile) is the measure over
+time of the spectral energy peaks divided in bands related to pitches.
+;
+#X text 246 337 ** Usually bigger windows are better for chroma extraction.
+;
+#X text 249 380 ** For chord detection \, it's usual to set a cutoff
+frequency more or less between 2000Hz and 5000Hz to avoid transients
+and because the main partials are probably below it.;
+#X text 210 320 2) Hop Size;
+#X text 211 304 1) FFT Size;
+#X text 212 357 3) cutoff frequency (Low-Pass analysis) \;;
+#X text 198 287 Arguments are:;
+#X text 205 429 4) Number of peaks to find;
+#X text 281 311 (both in samples and power of 2);
+#X text 9 27 HPCP12 outputs a vector of energy per twelve semitones
+calculated from the energy peaks in the frequency domain. It's called
+Chroma Vector.;
+#X text 319 251 Chroma vectors in a period of time;
+#X obj 35 459 list prepend 0;
+#N canvas 547 194 196 239 chromagram 0;
+#X obj 112 45 r next;
+#X obj 34 29 inlet;
+#N canvas 0 0 450 300 list 0;
+#N canvas 0 0 199 262 drip 0;
+#X obj 53 174 list split 1;
+#X obj 53 91 until;
+#X obj 53 129 list append;
+#X obj 79 58 t b l;
+#X obj 135 176 bang;
+#X obj 79 31 inlet;
+#X obj 53 199 outlet;
+#X connect 0 0 6 0;
+#X connect 0 1 2 1;
+#X connect 0 2 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 1;
+#X connect 4 0 1 1;
+#X connect 5 0 3 0;
+#X restore 152 84 pd drip;
+#X obj 153 219 list prepend;
+#X obj 251 219 t a;
+#N canvas 0 0 450 300 dripslow 0;
+#X obj 158 196 list split 1;
+#X obj 158 171 list append;
+#X obj 158 247 outlet;
+#X obj 158 47 inlet;
+#X obj 239 247 outlet;
+#X obj 232 45 inlet;
+#X obj 158 82 b;
+#X text 275 46 list;
+#X text 113 47 bang;
+#X text 283 247 EOL;
+#X text 99 246 element;
+#X obj 239 217 b;
+#X connect 0 0 2 0;
+#X connect 0 1 1 1;
+#X connect 0 2 11 0;
+#X connect 1 0 0 0;
+#X connect 3 0 6 0;
+#X connect 5 0 1 1;
+#X connect 6 0 1 0;
+#X connect 11 0 4 0;
+#X restore 205 141 pd dripslow;
+#X obj 268 106 inlet;
+#X obj 152 110 t f b;
+#X obj 132 254 list;
+#X obj 152 182 + 0;
+#X obj 133 24 inlet;
+#X obj 132 274 outlet;
+#X obj 132 50 t b a b;
+#X msg 167 157 0;
+#X connect 0 0 5 0;
+#X connect 1 0 2 0;
+#X connect 1 0 6 1;
+#X connect 2 0 1 1;
+#X connect 3 0 7 1;
+#X connect 4 0 3 1;
+#X connect 5 0 7 0;
+#X connect 5 1 3 0;
+#X connect 6 0 9 0;
+#X connect 7 0 1 0;
+#X connect 8 0 10 0;
+#X connect 10 0 6 0;
+#X connect 10 1 0 0;
+#X connect 10 2 1 1;
+#X connect 10 2 11 0;
+#X connect 11 0 7 1;
+#X restore 34 76 pd list add;
+#X obj 112 77 list;
+#N canvas 0 0 579 459 list 0;
+#X obj 138 130 route float;
+#X obj 116 232 f;
+#X obj 116 259 outlet;
+#X obj 116 20 inlet;
+#N canvas 0 0 450 300 once 0;
+#X obj 110 75 inlet;
+#X obj 105 187 spigot 1;
+#X obj 110 104 t b f;
+#X msg 125 151 0;
+#X msg 165 99 1;
+#X obj 165 63 inlet;
+#X obj 102 219 outlet;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 2 1 1 0;
+#X connect 3 0 1 1;
+#X connect 4 0 1 1;
+#X connect 5 0 4 0;
+#X restore 204 158 pd once;
+#X obj 177 199 f;
+#X obj 146 198 max;
+#X obj 116 40 t b a b;
+#X text 331 193 prime [min] and [max] with first item once;
+#X obj 138 160 t a a;
+#N canvas 0 0 199 224 drip 0;
+#X obj 53 174 list split 1;
+#X obj 53 91 until;
+#X obj 53 129 list append;
+#X obj 79 58 t b l;
+#X obj 135 176 bang;
+#X obj 79 31 inlet;
+#X obj 53 199 outlet;
+#X connect 0 0 6 0;
+#X connect 0 1 2 1;
+#X connect 0 2 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 1;
+#X connect 4 0 1 1;
+#X connect 5 0 3 0;
+#X restore 137 98 pd drip;
+#X connect 0 0 9 0;
+#X connect 1 0 2 0;
+#X connect 3 0 7 0;
+#X connect 4 0 6 1;
+#X connect 5 0 6 1;
+#X connect 6 0 5 0;
+#X connect 6 0 1 1;
+#X connect 7 0 1 0;
+#X connect 7 1 10 0;
+#X connect 7 2 4 1;
+#X connect 9 0 6 0;
+#X connect 9 1 4 0;
+#X connect 10 0 0 0;
+#X restore 90 125 pd list max;
+#X obj 34 102 t l l;
+#X obj 112 153 /;
+#X obj 35 207 s chromagram;
+#N canvas 381 107 467 423 list 0;
+#X obj 96 43 inlet;
+#X obj 285 62 inlet;
+#X obj 161 362 outlet;
+#X obj 180 258 outlet;
+#X obj 161 327 list;
+#X obj 285 225 list prepend;
+#X obj 364 195 t a;
+#X obj 161 165 t b a a b;
+#X obj 96 68 route bang;
+#X obj 96 93 b;
+#X obj 161 94 t b a;
+#X obj 161 134 list;
+#N canvas 0 0 199 262 drip 0;
+#X obj 53 174 list split 1;
+#X obj 53 91 until;
+#X obj 53 129 list append;
+#X obj 79 58 t b l;
+#X obj 135 176 bang;
+#X obj 79 31 inlet;
+#X obj 53 199 outlet;
+#X connect 0 0 6 0;
+#X connect 0 1 2 1;
+#X connect 0 2 4 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 3 1 2 1;
+#X connect 4 0 1 1;
+#X connect 5 0 3 0;
+#X restore 179 218 pd drip;
+#X connect 0 0 8 0;
+#X connect 1 0 5 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 5 0 4 1;
+#X connect 6 0 5 1;
+#X connect 7 0 4 0;
+#X connect 7 1 12 0;
+#X connect 7 2 4 1;
+#X connect 7 3 5 1;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 10 1 11 1;
+#X connect 11 0 7 0;
+#X connect 12 0 3 0;
+#X restore 35 155 pd list map;
+#X obj 36 180 list prepend 0;
+#X connect 0 0 3 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 1;
+#X connect 4 0 6 1;
+#X connect 5 0 8 0;
+#X connect 5 1 4 0;
+#X connect 6 0 8 1;
+#X connect 8 0 9 0;
+#X connect 8 1 6 0;
+#X connect 9 0 7 0;
+#X restore 22 510 pd chromagram;
+#X obj 22 432 HPCP12~ 8192 1024 5000 20;
+#X connect 0 0 51 1;
+#X connect 1 0 51 1;
+#X connect 2 0 1 0;
+#X connect 31 0 51 0;
+#X connect 32 0 31 1;
+#X connect 33 0 31 0;
+#X connect 49 0 34 0;
+#X connect 51 0 49 0;
+#X connect 51 0 50 0;
