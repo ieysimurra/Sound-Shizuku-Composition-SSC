@@ -1,0 +1,46 @@
+#N canvas 81 242 1008 686 12;
+#X obj 389 341 folderspiller;
+#X msg 389 294 panel;
+#X msg 443 294 symbol /;
+#X floatatom 21 493 5 0 0 0 - - -;
+#X obj 23 399 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X symbolatom 327 641 40 0 0 0 - - -;
+#X obj 396 542 bng 15 250 50 0 empty empty empty 0 -6 0 8 -262144 -1
+-1;
+#X text 413 540 Bangs when there is no file name at that index.;
+#X obj 327 510 fbox 1;
+#X msg 492 490 bang;
+#X text 9 516 Output file name at selected index.;
+#X text 44 397 Display the gui.;
+#X text 332 622 Outputs selected file name;
+#X text 27 7 Auhtor(bugs and questions): mr.tof \, tom@danslchamp.org
+;
+#X text 27 29 Description : FBOX collects file names and permits their
+individual selection through its hot inlet. It can also build a gui
+permitting easy selection.;
+#X text 501 339 Warning : FOLDERSPILLER is very slow and FBOX's new
+gui can take time to build. Also \, there is a bug with the vradio
+object that limits it to 128 boxes.;
+#X text 534 493 Build and update the gui.;
+#X msg 492 465 symbol clear contents and retitle the gui.;
+#X text 30 145 Argument : if FBOX is given a non zero creation argument
+\, it automticaly closes the gui when a file is selected.;
+#X text 28 93 Warning : FBOX only works with file names because it
+strips the path from the file name when building the gui.;
+#X msg 493 437 symbol /file to add;
+#X text 28 226 In this example \, FOLDERSPILLER is used to fill FBOX
+with the file names of a particular folder.;
+#X text 28 190 REQUIRMENTS : ZEXY 1.3 \, GGEE (STRIPDIR) \, TOT.;
+#X connect 0 0 8 1;
+#X connect 0 1 8 2;
+#X connect 0 2 8 3;
+#X connect 1 0 0 0;
+#X connect 2 0 0 0;
+#X connect 3 0 8 0;
+#X connect 4 0 8 0;
+#X connect 8 0 5 0;
+#X connect 8 1 6 0;
+#X connect 9 0 8 3;
+#X connect 17 0 8 2;
+#X connect 20 0 8 1;

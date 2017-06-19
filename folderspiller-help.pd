@@ -1,0 +1,38 @@
+#N canvas 20 1 1008 686 12;
+#X msg 543 384 criteria *.*;
+#X msg 546 416 criteria *;
+#X msg 548 451 criteria *.wav;
+#X msg 94 248 panel;
+#X msg 244 337 symbol /;
+#X text 37 29 Description : FOLDERSPILLER dumps the files \, matching
+a certain criteria \, of a selected directory on your computer.;
+#X obj 280 643 print;
+#X text 37 7 Auhtor(bugs and questions): mr.tof \, tom@danslchamp.org
+;
+#X msg 546 481 criteria *.mp3;
+#X text 85 225 Open a panel to select the directory to be listed.;
+#X text 245 304 List the contents of your root directory that match
+the criteria.;
+#X obj 281 537 folderspiller;
+#X text 63 552 Outlet 1: Spills the files.;
+#X text 42 162 Requirments : TOT \, Zexy 1.3;
+#X text 42 81 Criteria : the criteria is the search string to witch
+FOLDERSPILLER must find a match in the selected directory. Examples
+: (* = all files and folders \, *.wav = wav files \, *.txt = text files
+\, *.* = all files). Default criteria = *.*.;
+#X msg 388 596 done spilling;
+#X text 500 596 Outlet 3: Bangs when the spilling is done.;
+#X msg 328 567 start spilling \$1;
+#X text 475 566 Outlet 2: The name of the directory being spilled (symbol).
+;
+#X connect 0 0 11 0;
+#X connect 1 0 11 0;
+#X connect 2 0 11 0;
+#X connect 3 0 11 0;
+#X connect 4 0 11 0;
+#X connect 8 0 11 0;
+#X connect 11 0 6 0;
+#X connect 11 1 17 0;
+#X connect 11 2 15 0;
+#X connect 15 0 6 0;
+#X connect 17 0 6 0;

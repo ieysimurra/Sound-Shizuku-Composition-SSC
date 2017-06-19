@@ -1,0 +1,159 @@
+#N canvas -1 22 1008 392 10;
+#X obj 182 15 bng 15 250 50 0 empty empty insert_sound 17 7 0 10 -262144
+-1 -1;
+#X floatatom -435 302 9 0 0 1 real-time - -;
+#X obj 496 229 nbx 5 14 -1e+37 1e+37 0 1 scale empty Scale(Hz) 0 -8
+0 10 -262144 -1 -1 4000 256;
+#N canvas 557 202 257 268 player 0;
+#X obj 7 162 outlet~;
+#X obj 4 126 dac~;
+#X obj 25 -38 inlet;
+#X obj 61 190 s guia;
+#X obj 60 136 count~;
+#X obj 61 165 snapshot~;
+#X msg 106 109 stop;
+#X msg 132 54 range 0 \$1;
+#X obj 140 121 bang~;
+#X obj 140 142 spigot;
+#X obj 191 121 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 127 86 1;
+#X msg 165 91 0;
+#X obj 25 -13 t b b;
+#X obj 26 67 tabplay~ sound;
+#X obj 131 30 arraysize sound;
+#X connect 2 0 13 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 6 0 4 0;
+#X connect 7 0 3 0;
+#X connect 8 0 9 0;
+#X connect 9 0 5 0;
+#X connect 10 0 9 1;
+#X connect 11 0 10 0;
+#X connect 12 0 10 0;
+#X connect 13 0 4 0;
+#X connect 13 0 11 0;
+#X connect 13 0 14 0;
+#X connect 13 1 15 0;
+#X connect 14 0 1 0;
+#X connect 14 0 1 1;
+#X connect 14 0 0 0;
+#X connect 14 1 6 0;
+#X connect 14 1 12 0;
+#X connect 15 0 7 0;
+#X restore -435 52 pd player;
+#X obj -435 33 bng 15 250 50 0 empty empty Play 17 7 0 10 -262144 -1
+-1;
+#X obj 142 56 hsl 345 300 0 120158 0 0 empty guia empty -2 -8 0 10
+-262144 -258113 -1 0 1;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array SpectralFrequencyKurtosisL2 234 float 1;
+#A 0 -0.337727 40.8693 13.0699 19.4596 19.8766 19.0936 17.2592 17.9482
+20.0047 20.6332 18.1575 17.8974 17.2298 18.6674 21.0194 16.2963 14.1494
+12.2163 16.5356 21.7012 23.0473 23.771 22.3355 22.4407 21.9426 23.7193
+22.0352 20.5121 21.5775 19.7143 18.8924 19.4304 19.4666 19.8918 20.2831
+22.8351 22.9472 21.9363 21.2939 21.4479 21.0311 20.5003 20.8742 21.2198
+20.5832 21.6161 21.3563 22.3238 21.2833 20.1907 20.173 21.3983 21.5965
+21.6181 19.1088 18.7826 17.1354 19.6252 21.0099 19.4145 19.5534 17.6927
+16.7687 16.419 16.8192 15.3177 15.6758 14.3298 14.4864 13.8244 14.6067
+13.9468 14.1189 14.1461 13.2987 15.0062 14.4672 14.1145 14.7574 13.9036
+13.6852 13.5152 14.1087 13.8369 13.9666 13.226 13.494 13.8919 14.5324
+13.8959 14.0127 13.9593 13.6598 12.3902 13.4771 13.3153 13.1646 12.8696
+13.4354 12.8588 13.6475 12.7219 14.0655 12.6928 12.729 13.5385 12.6841
+12.8511 13.0808 13.564 12.8926 13.9028 13.6154 13.0722 13.0274 12.6911
+13.0178 13.1908 13.1994 13.5153 12.948 13.059 12.706 13.7656 13.2554
+14.3285 13.2654 13.5526 12.8367 12.3764 13.028 13.7367 13.4004 13.0396
+13.1293 13.0453 13.5472 13.2366 13.3639 13.2358 12.3657 12.772 12.9035
+13.508 13.5358 13.6099 12.7623 12.5215 13.4427 11.988 12.851 12.4292
+12.6009 12.6239 12.6382 13.3063 13.2955 12.8583 12.6669 12.431 12.5573
+12.6832 12.0218 12.2604 12.0854 12.5746 11.8983 12.4362 12.6254 12.7806
+12.0725 12.0413 11.8753 12.4656 12.7431 12.7249 11.4804 11.5261 11.072
+11.0945 10.9364 11.393 10.6027 10.713 9.97407 9.98595 10.4128 10.3486
+9.7273 9.29891 8.76077 8.85396 8.62827 8.18528 7.70489 6.73102 6.25232
+5.80116 5.46391 4.42353 3.85559 4.62657 4.22183 3.89648 7.47085 8.71702
+19.053 36.2537 93.2226 113.662 110.83 101.216 69.1015 74.0211 70.226
+98.9458 121.919 173.676 237.495 234.346 232.333 242.817 241.161 242.633
+225.59 230.267 260.525 276.584 278.947 244.199 200.002 131.246 69.9259
+0;
+#X coords 0 4000 233 0 350 140 1;
+#X restore 139 215 graph;
+#X floatatom 497 262 8 0 0 2 Sample - -;
+#X floatatom 497 301 8 0 0 1 Hz - -;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array sound 120158 float 2;
+#X coords 0 1 120158 -1 350 140 1;
+#X restore 139 56 graph;
+#N canvas 136 89 215 186 sample 0;
+#X obj 50 80 soundfiler;
+#X obj 50 13 inlet;
+#X obj 50 34 openpanel;
+#X msg 50 57 read -resize \$1 sound;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X restore 182 35 pd sample;
+#N canvas 519 471 645 210 values 0;
+#X obj 16 31 t b f;
+#X obj 16 90 pack f 5000;
+#X msg 16 120 bounds 0 \$2 \$1 0;
+#X obj 16 10 r scale;
+#X obj 253 36 inlet;
+#X obj 253 98 outlet;
+#X obj 388 103 s guia;
+#X obj 253 73 tabread SpectralFrequencyKurtosisL2;
+#X obj 16 61 arraysize SpectralFrequencyKurtosisL2;
+#X obj 16 150 s SpectralFrequencyKurtosisL2;
+#X connect 0 0 8 0;
+#X connect 0 1 1 1;
+#X connect 1 0 2 0;
+#X connect 2 0 9 0;
+#X connect 3 0 0 0;
+#X connect 4 0 6 0;
+#X connect 4 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 1 0;
+#X restore 497 282 pd values;
+#X msg -250 110 off;
+#X msg -250 30 norm \$1;
+#X floatatom -250 12 5 0 0 0 - - -;
+#X msg -250 86 rt 1024 2;
+#X obj -256 195 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text -259 47 -----------------------------------------------------------
+;
+#X text -259 140 -----------------------------------------------------------
+;
+#X text -223 110 turn real-time mode off;
+#X text -122 5 PARAMETER;
+#X text 322 -13 monteiro.adc@gmail.com;
+#X text -216 11 Distance norm;
+#X text -11 87 (click on play);
+#X text -254 60 REAL-TIME MODE: extract from incoming signal;
+#X text -257 154 TABLE MODE: extract directly from a table;
+#X text -145 176 parameters:;
+#X text -187 83 real-time mode: window size \; hop-size;
+#X obj -256 214 arraysize sound;
+#X obj -256 238 expr int($f1/512);
+#X text 38 -12 Part of PDescriptors-v2 \, by Adriano Monteiro -;
+#X text -76 176 source name (table) \; offset (samples) \; destination
+table \; number of analysis windows * \; window-size \; hop-size;
+#X text -440 -18 Spectral Frequency Skewness - Norm L2;
+#X msg -256 263 table sound 0 SpectralFrequencyKurtosisL2 \$1 1024
+512;
+#X obj -435 82 SpectralFrequencyKurtosisL2;
+#X msg -261 302 \; SpectralFrequencyKurtosisL2 write teste.txt;
+#X connect 0 0 10 0;
+#X connect 3 0 34 0;
+#X connect 4 0 3 0;
+#X connect 7 0 11 0;
+#X connect 11 0 8 0;
+#X connect 12 0 34 1;
+#X connect 13 0 34 1;
+#X connect 14 0 13 0;
+#X connect 15 0 34 1;
+#X connect 16 0 28 0;
+#X connect 28 0 29 0;
+#X connect 29 0 33 0;
+#X connect 33 0 34 1;
+#X connect 34 0 1 0;
