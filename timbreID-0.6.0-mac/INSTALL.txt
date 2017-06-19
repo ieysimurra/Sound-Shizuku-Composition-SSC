@@ -1,0 +1,1 @@
+To install, just drop the tID directory into a directory of your choosing and add that to Pd's search path.  You can do this via the "Path..." item in Pd's Preferences menu.
